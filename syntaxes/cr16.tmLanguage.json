@@ -105,7 +105,7 @@
 			]
 		},
 		"registers": {
-			"match": "\\b(r|R)([0-9]|A|sp|SP)\\b",
+			"match": "\\b(r|R)([0-9]|1[0-3]|A|sp|SP)\\b",
 			"name": "variable.other.register.cr16"
 		}
 	},

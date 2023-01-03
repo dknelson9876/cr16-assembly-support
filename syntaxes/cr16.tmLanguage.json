@@ -1,0 +1,113 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "CR16 Assembly",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#instructions"
+		},
+		{
+			"include": "#immediates"
+		},
+		{
+			"include": "#labels"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#macros"
+		},
+		{
+			"include": "#registers"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.cr16",
+					"match": "\\b(if|while|for|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.cr16",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.cr16",
+					"match": "\\\\."
+				}
+			]
+		},
+		"instructions": {
+			"patterns": [
+				{
+					"name": "support.function.lower.cr16",
+					"match": "\\b(add|addi|addu|addui|addc|addci|mul|muli|sub|subi|subc|subci|cmp|cmpi|and|andi|or|ori|xor|xori|mov|movi|lsh|lshi|ashu|ashui|lui|load|stor|snxb|zrxb|jal|tbit|tbiti|lpr|spr|di|ei|excp|retx|wait|nop)\\b"
+				},
+				{
+					"name": "support.function.upper.cr16",
+					"match": "\\b(ADD|ADDI|ADDU|ADDUI|ADDC|ADDCI|MUL|MULI|SUB|SUBI|SUBC|SUBCI|CMP|CMPI|AND|ANDI|OR|ORI|XOR|XORI|MOV|MOVI|LSH|LSHI|ASHU|ASHUI|LUI|LOAD|STOR|SNXB|ZRXB|JAL|TBIT|TBITI|LPR|SPR|DI|EI|EXCP|RETX|WAIT|NOP)\\b"
+				},
+				{
+					"name": "support.function.conditional.cr16",
+					"match": "\\b(b|B|j|J|s|S)(eq|ne|cs|cc|hi|ls|gt|le|fs|fc|lo|hs|lt|ge|uc|EQ|NE|CS|CC|HI|LS|GT|LE|FS|FC|LO|HS|LT|GE|UC)\\b"
+				},
+				{
+					"name": "support.function.pseudo.cr16",
+					"match": "\\b(CALL|MOVW)\\b"
+				}
+			]
+		},
+		"immediates": {
+			"patterns":[
+				{
+					"match": "\\$0x[0-9a-fA-F]+",
+					"name": "constant.numeric.hex.cr16"
+				},
+				{
+					"match": "\\$[0-9]+",
+					"name": "constant.numeric.dec.cr16"
+				},
+				{
+					"match": "\\$-[0-9]+",
+					"name": "constant.numeric.neg.cr16"
+				}
+			]
+		},
+		"labels":{
+			"match": "\\.[a-zA-Z0-9_]+\\b",
+			"name": "entity.name.class"
+		},
+		"comments":{
+			"begin": "#",
+			"end": "\n",
+			"name": "comment.line.cr16"
+		},
+		"macros": {
+			"patterns": [
+				{
+					"match": "`define\\s+",
+					"name": "keyword.other.compiler.directive.cr16"
+				},
+				{
+					"match": "`[a-zA-Z0-9_&]+",
+					"name": "variable.name"
+				}
+			]
+		},
+		"registers": {
+			"match": "\\b(r|R)([0-9]|A|sp|SP)\\b",
+			"name": "variable.other.register.cr16"
+		}
+	},
+	"scopeName": "source.cr16"
+}

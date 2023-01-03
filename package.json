@@ -1,0 +1,25 @@
+{
+  "name": "cr16-assembly-support",
+  "displayName": "CR16 Assembly Support",
+  "description": "Syntax highlighting for CR16 Assembly",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "cr16",
+      "aliases": ["CR16 Assembly", "cr16"],
+      "extensions": [".asm",".cr16"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "cr16",
+      "scopeName": "source.cr16",
+      "path": "./syntaxes/cr16.tmLanguage.json"
+    }]
+  }
+}
